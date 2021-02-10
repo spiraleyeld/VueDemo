@@ -5,17 +5,38 @@
   <title>Vue Demo</title>
   <link rel="stylesheet" href="css\bootstrap.min.css">
   <link rel="stylesheet" href="css\bootstrap-grid.min.css">
-  <style type='text/css'>
-    .red {color:red;}
-    .blue {color:blue;font-size:100px;}
-  </style>
 </head>
 <body>
 <div id="app">
-    <div id="example-1">
-      <button v-on:click="counter += 1">Number : {{ counter }}</button><br/>
-      <button v-on:dblclick="greet('abc' , $event)">Greet</button>
-    </div>
+  <div id=example-1>
+      <input v-model="message" placeholder="edit me"/>
+      <p>Message is : {{ message }}</p>
+      <textarea v-model="message2" placeholder="add mutiple lines"></textarea>
+      <p style="white-space: pre-line;">{{ message2 }}</p>
+      <br>
+  </div>
+  <div id="example-2">
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <br>
+    <input type="checkbox" id="tom" value="Tom" v-model="checkedNames">
+    <label for="tom">Tom</label>
+    <br>
+    <input type="checkbox" id="ac" value="Ac" v-model="checkedNames">
+    <label for="ac">Ac</label>
+    <br>
+    <span>Picked: {{ checkedNames }}</span>
+</div>
+  <div id="example-2">
+      <input type="radio" id="one" value="One" v-model="picked">
+      <label for="one">One</label>
+      <br>
+      <input type="radio" id="two" value="Two" v-model="picked">
+      <label for="two">Two</label>
+      <br>
+      <span>Picked: {{ picked }}</span>
+  </div>
+  <button type="button" @click="submit">Submit</button>
 </div>
 <script src="js\vue.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
@@ -23,15 +44,23 @@
 var vm = new Vue({
     el: "#app",
     data:{
-        counter:0,
-        name:"vue"
+      message:"test",
+      message2:"hi",
+      checkedNames:['Tom','Ac'],
+      picked:'Two'
     },
     methods:{
-      greet: function(str, e){
-        alert(str);
-        console.log(e);
+      submit : function(){
+        console.log(this.message);
+        var json = {
+          msg1: this.message,
+          msg2: this.message2,
+          checkval: this.checkedNames
+        };
+        console.log(json);
       }
-    }    
+    }
+     
 });
 
  
