@@ -5,24 +5,35 @@
   <title>Vue Demo</title>
   <link rel="stylesheet" href="css\bootstrap.min.css">
   <link rel="stylesheet" href="css\bootstrap-grid.min.css">
+  <style type='text/css'>
+    .red {color:red;}
+    .blue {color:blue;font-size:100px;}
+  </style>
 </head>
 <body>
 <div id="app">
-    {{ a }}
+    {{ msg }}
+    <p>Using mistaches: {{ rawHtml }}</p>
+    <p v-html='rawHtml'></p>
+    <p v-bind:class="color">test...</p>
+    <p>{{ number = 1}}</p>
+    <p>{{ 1==1? 'YES' : 'NO'}}</p>
+    <P>{{ message.split('').reverse().join('') }}</P>
 </div>
-
-
-
-
-
-
 <script src="js\vue.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
 var data = { a : 1 };
 var vm = new Vue({
     el: "#app",
-    data:data
+    data:{
+        msg:"Hi Vue",
+        rawHtml: '<span style="color:red">this is should be red</span>',
+        number:10,
+        color:'blue',
+        ok:1,
+        message : 'awe'
+    }
     
 });
 
