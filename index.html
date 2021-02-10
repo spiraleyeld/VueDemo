@@ -7,22 +7,31 @@
   <link rel="stylesheet" href="css\bootstrap-grid.min.css">
 </head>
 <body>
-    <div id="app">
-        {{ message }}
-    </div>
+<div id="app">
+    {{ a }}
+</div>
 
 
 
 
 
 
-    <script src="js\vue.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
-        var app = new Vue({
-            el: '#app',
-            data:{
-                message: 'Hello Vue!!!'
-            }
-        });
-    </script>
+<script src="js\vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+var data = { a : 1 };
+var vm = new Vue({
+    el: "#app",
+    data:data
+    
+});
+
+vm.$watch('a', function(newVal, oldVal){
+    console.log(newVal, oldVal);
+})
+
+vm.$data.a = "test..."
+
+
+</script>
 </body>
