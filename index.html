@@ -12,49 +12,34 @@
 </head>
 <body>
 <div id="app">
-    {{ msg }}
-    <p>Using mistaches: {{ rawHtml }}</p>
-    <p v-html='rawHtml'></p>
-    <p v-bind:class="color">test...</p>
-    <p>{{ number = 1}}</p>
-    <p>{{ 1==1? 'YES' : 'NO'}}</p>
-    <P>{{ message.split('').reverse().join('') }}</P>
-    <p v-if="seen">Now you see me</p>
-    <a v-bind:href="url">LINK</a>
-    <div @click="click1">
-      <div @click.stop="click2">
-        Click Me
-      </div>
-    </div>
+  <ul v-for="item, idex in items" :key="idex">
+      {{ item.message }}
+      {{ idex }}
+  </ul>
+  <ul v-for="value, key in object" :key="key">
+    {{ key }} : {{ value }}
+
+</ul>
 </div>
 <script src="js\vue.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
-var data = { a : 1 };
 var vm = new Vue({
     el: "#app",
     data:{
-        msg:"Hi Vue",
-        rawHtml: '<span style="color:red">this is should be red</span>',
-        number:10,
-        color:'blue',
-        url:"https://www.google.com",
-        ok:1,
-        message : 'awe',
-        seen:true
-    },
-    methods:{
-      click1:function(){
-        console.log('click1......');
-      },
-      click2:function(){
-        console.log('click2......');
-      }
-    }
-    
+       items:[
+         {message : 'Foo'},
+         {message : 'bar'}
+       ],
+       object : {
+         title: 'How to do lists in Vue',
+         author: 'awei.lin',
+         publishedAt:'2021/2/10'
+        }
+    }    
 });
 
-vm.$data.a = "test..."
+ 
 
 
 </script>
