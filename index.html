@@ -12,14 +12,10 @@
 </head>
 <body>
 <div id="app">
-  <ul v-for="item, idex in items" :key="idex">
-      {{ item.message }}
-      {{ idex }}
-  </ul>
-  <ul v-for="value, key in object" :key="key">
-    {{ key }} : {{ value }}
-
-</ul>
+    <div id="example-1">
+      <button v-on:click="counter += 1">Number : {{ counter }}</button><br/>
+      <button v-on:dblclick="greet('abc' , $event)">Greet</button>
+    </div>
 </div>
 <script src="js\vue.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
@@ -27,15 +23,14 @@
 var vm = new Vue({
     el: "#app",
     data:{
-       items:[
-         {message : 'Foo'},
-         {message : 'bar'}
-       ],
-       object : {
-         title: 'How to do lists in Vue',
-         author: 'awei.lin',
-         publishedAt:'2021/2/10'
-        }
+        counter:0,
+        name:"vue"
+    },
+    methods:{
+      greet: function(str, e){
+        alert(str);
+        console.log(e);
+      }
     }    
 });
 
