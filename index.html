@@ -11,6 +11,7 @@
   <button-counter title="titleA" @clicknow="clicknow">
     <h2>h2...</h2>
   </button-counter>
+  <test></test>
     
   <button-counter title="titleB"></button-counter>
 </div>
@@ -43,6 +44,11 @@ var vm = new Vue({
     methods:{
       clicknow:function(e){
         console.log(e);
+      }
+    },
+    components:{
+      test:{
+        template:"<h2>test..partial component...</h2>"
       }
     }
      
